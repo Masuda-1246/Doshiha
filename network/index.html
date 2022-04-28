@@ -9,6 +9,7 @@
     }
     h3 {
       text-align: center;
+      color:white;
     }
     img {
       width: 150px;
@@ -20,7 +21,11 @@
     }
     p{
       text-align: center;
-      margin:0px;
+      width: 100%;
+      margin-top:0px;
+      margin-bottom:0px;
+      margin-left:11px;
+      color: white;
     }
     .card {
       width: 200px;
@@ -30,6 +35,12 @@
       box-shadow: 0 2px 5px #ccc;
       display: inline-block;
       margin: 10px;
+    }
+    .card:hover{
+      opacity: 0.9;
+    }
+    .back{
+      position:absolute;
     }
     #from{
       background-color:rgb(87, 213, 52);
@@ -75,101 +86,101 @@
 
     </div>
       <section class="card" onClick="func(`from_div`)" id="from" >
+        <h3>From</h3>
         <div class="back" hidden=true id="from_div">
-          <h3>From</h3>
           <p>Shiga</p>
           <img src="./img/shiga.png" />
         </div>
       </section>
 
       <section class="card" onClick="func(`birthday_div`)" id="birthday" >
+        <h3>Birthday</h3>
         <div class="back" hidden=true id="birthday_div">
-          <h3>Birthday</h3>
           <p>11/12</p>
           <img src="./img/birthday.png" />
         </div>
       </section>
 
       <section class="card" onClick="func(`star_div`)" id="star" >
+        <h3>sit straight</h3>
         <div class="back" hidden=true id="star_div">
-          <h3>sit straight</h3>
           <p>Scorpion</p>
           <img src="./img/star.jpg" />
         </div>
       </section>
 
       <section class="card" onClick="func(`blood_div`)" id="blood" >
+        <h3>Blood Type</h3>
         <div class="back" hidden=true id="blood_div">
-          <h3>Blood Type</h3>
           <p>O</p>
           <img src="./img/o.png" />
         </div>
       </section>
 
       <section class="card" onClick="func(`sports_div`)" id="sports" >
+        <h3>Sports</h3>
         <div class="back" hidden=true id="sports_div">
-          <h3>Sports</h3>
           <p>Soccer</p>
           <img src="./img/soccer.png" />
         </div>
       </section>
 
       <section class="card" onClick="func(`team_div`)" id="team" >
+        <h3>Team</h3>
         <div class="back" hidden=true id="team_div">
-          <h3>Team</h3>
           <p>Liverpool</p>
           <img src="./img/liverpool.png" />
         </div>
       </section>
 
       <section class="card" onClick="func(`manga_div`)" id="manga" >
+        <h3>Manga</h3>
         <div class="back" hidden=true id="manga_div">
-          <h3>Manga</h3>
           <p>SPY×FAMILY</p>
           <img src="./img/spy.png" />
         </div>
       </section>
 
       <section class="card" onClick="func(`arghist_div`)" id="arthist" >
+        <h3>Arthist</h3>
         <div class="back" hidden=true id="arghist_div">
-          <h3>Arthist</h3>
           <p>zutomayo</p>
           <img src="./img/zutomayo.jpeg" />
         </div>
       </section>
 
       <section class="card" onClick="func(`interests_div`)" id="interests" >
+        <h3>Interest</h3>
         <div class="back" hidden=true id="interests_div">
-          <h3>Interest</h3>
           <p>Artificial intelligence</p>
           <img src="./img/ai.png" />
         </div>
       </section>
 
       <section class="card" onClick="func(`java_div`)" id="java" >
+        <h3>Language</h3>
         <div class="back" hidden=true id="java_div">
-          <h3>Language</h3>
           <p>Java</p>
           <img src="./img/java.svg" />
         </div>
       </section>
 
       <section class="card" onClick="func(`js_div`)" id="js" >
+        <h3>Language</h3>
         <div class="back" hidden=true id="js_div">
-          <h3>Language</h3>
           <p>JavaScript</p>
           <img src="./img/javascript.svg" />
         </div>
       </section>
 
       <section class="card" onClick="func(`python_div`)" id="python" >
+        <h3>Language</h3>
         <div class="back" hidden=true id="python_div">
-          <h3>Language</h3>
           <p>Python</p>
           <img src="./img/python.svg" />
         </div>
       </section>
-
+      <h2>Touch me!</h2>
       
     </div>
   </section>
