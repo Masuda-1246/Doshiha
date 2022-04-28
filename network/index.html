@@ -1,9 +1,6 @@
-<!DOCTYPE html>
+
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>1116211038 増田遥介</title>
   <style>
     h2 {
@@ -19,6 +16,7 @@
       border-radius: 50%; 
       background-color: white;
       margin-left: 25px;
+      border: solid;
     }
     p{
       text-align: center;
@@ -76,96 +74,96 @@
     <div>
 
     </div>
-      <section class="card" id="from" >
-        <div class="back">
+      <section class="card" onClick="func(`from_div`)" id="from" >
+        <div class="back" hidden=true id="from_div">
           <h3>From</h3>
           <p>Shiga</p>
           <img src="./img/shiga.png" />
         </div>
       </section>
 
-      <section class="card" id="birthday" >
-        <div class="back">
+      <section class="card" onClick="func(`birthday_div`)" id="birthday" >
+        <div class="back" hidden=true id="birthday_div">
           <h3>Birthday</h3>
           <p>11/12</p>
           <img src="./img/birthday.png" />
         </div>
       </section>
 
-      <section class="card" id="star" >
-        <div class="back">
+      <section class="card" onClick="func(`star_div`)" id="star" >
+        <div class="back" hidden=true id="star_div">
           <h3>sit straight</h3>
           <p>Scorpion</p>
           <img src="./img/star.jpg" />
         </div>
       </section>
 
-      <section class="card" id="blood" >
-        <div class="back">
+      <section class="card" onClick="func(`blood_div`)" id="blood" >
+        <div class="back" hidden=true id="blood_div">
           <h3>Blood Type</h3>
           <p>O</p>
           <img src="./img/o.png" />
         </div>
       </section>
 
-      <section class="card" id="sports" >
-        <div class="back">
+      <section class="card" onClick="func(`sports_div`)" id="sports" >
+        <div class="back" hidden=true id="sports_div">
           <h3>Sports</h3>
           <p>Soccer</p>
           <img src="./img/soccer.png" />
         </div>
       </section>
 
-      <section class="card" id="team" >
-        <div class="back">
+      <section class="card" onClick="func(`team_div`)" id="team" >
+        <div class="back" hidden=true id="team_div">
           <h3>Team</h3>
           <p>Liverpool</p>
           <img src="./img/liverpool.png" />
         </div>
       </section>
 
-      <section class="card" id="manga" >
-        <div class="back">
+      <section class="card" onClick="func(`manga_div`)" id="manga" >
+        <div class="back" hidden=true id="manga_div">
           <h3>Manga</h3>
           <p>SPY×FAMILY</p>
           <img src="./img/spy.png" />
         </div>
       </section>
 
-      <section class="card" id="arthist" >
-        <div class="back">
+      <section class="card" onClick="func(`arghist_div`)" id="arthist" >
+        <div class="back" hidden=true id="arghist_div">
           <h3>Arthist</h3>
           <p>zutomayo</p>
           <img src="./img/zutomayo.jpeg" />
         </div>
       </section>
 
-      <section class="card" id="interests" >
-        <div class="back">
+      <section class="card" onClick="func(`interests_div`)" id="interests" >
+        <div class="back" hidden=true id="interests_div">
           <h3>Interest</h3>
           <p>Artificial intelligence</p>
           <img src="./img/ai.png" />
         </div>
       </section>
 
-      <section class="card" id="java" >
-        <div class="back">
+      <section class="card" onClick="func(`java_div`)" id="java" >
+        <div class="back" hidden=true id="java_div">
           <h3>Language</h3>
           <p>Java</p>
           <img src="./img/java.svg" />
         </div>
       </section>
 
-      <section class="card" id="js" >
-        <div class="back">
+      <section class="card" onClick="func(`js_div`)" id="js" >
+        <div class="back" hidden=true id="js_div">
           <h3>Language</h3>
           <p>JavaScript</p>
           <img src="./img/javascript.svg" />
         </div>
       </section>
 
-      <section class="card" id="python" >
-        <div class="back">
+      <section class="card" onClick="func(`python_div`)" id="python" >
+        <div class="back" hidden=true id="python_div">
           <h3>Language</h3>
           <p>Python</p>
           <img src="./img/python.svg" />
@@ -175,5 +173,12 @@
       
     </div>
   </section>
+  <script>
+    function func(s) {
+      console.log(s)
+      let a = document.getElementById(s)
+      a.hidden = false
+    }
+  </script>
 </body>
 </html>
