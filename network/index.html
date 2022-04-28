@@ -1,6 +1,7 @@
 
-<html lang="ja">
+<html>
 <head>
+  <meta http-equiv="content-type" charset="UTF-8">
   <title>1116211038 増田遥介</title>
   <style>
     body{
@@ -68,25 +69,21 @@
       background-color:white;
       box-shadow: 0 2px 5px #ccc;
     }
-    .hidden{
-      text-align: center;
-      animation: fadeIn 2s ease 0s 1 normal;
-    }
     @keyframes fadeIn {
       0% {opacity: 0}
       100% {opacity: 1} 
     }
     #from{
-      background-color:rgb(87, 213, 52);
+      background-color:rgb(52, 200, 213);
     }
     #birthday{
       background-color:rgb(251, 215, 97);
     }
-    #blood{
-      background-color:rgb(247, 133, 209);
+    #school{
+      background-color:rgb(94, 0, 95);
     }
     #sports{
-      background-color:rgb(55, 178, 227);
+      background-color:rgb(66, 227, 55);
     }
     #team{
       background-color:rgb(238, 34, 34);
@@ -101,19 +98,16 @@
       background-color:rgb(15, 29, 75);
     }
     #java{
-      background-color:rgb(223, 74, 33);
+      background-color:rgb(223, 46, 33);
     }
     #js{
-      background-color:rgb(248, 252, 5);
+      background-color:rgb(252, 244, 5);
     }
     #python{
-      background-color:rgb(36, 223, 33);
+      background-color:rgb(10, 243, 6);
     }
     #star{
-      background-color:rgb(103, 33, 223);
-    }
-    #image{
-      margin-left: 0px;
+      background-color:rgb(128, 114, 152);
     }
     #all{
       text-align: center;
@@ -125,18 +119,11 @@
   <div id="all">
     <div class="content">
         <h2>About Me</h2>
-        <section class="card" onClick="func(`from_div`)" id="from" >
-          <h3>From</h3>
-          <div class="back" hidden=true id="from_div">
-            <p>Shiga</p>
-            <img src="./img/shiga.png" />
-          </div>
-        </section>
-
+        
         <section class="card" onClick="func(`birthday_div`)" id="birthday" >
           <h3>Birthday</h3>
           <div class="back" hidden=true id="birthday_div">
-            <p>11/12</p>
+            <p>2002/11/12</p>
             <img src="./img/birthday.png" />
           </div>
         </section>
@@ -145,23 +132,32 @@
           <h3>sit straight</h3>
           <div class="back" hidden=true id="star_div">
             <p>Scorpion</p>
-            <img src="./img/star.jpg" />
+            <img src="./img/star.png" />
           </div>
         </section>
 
-        <section class="card" onClick="func(`blood_div`)" id="blood" >
-          <h3>Blood Type</h3>
-          <div class="back" hidden=true id="blood_div">
-            <p>O</p>
-            <img src="./img/o.png" />
+        <section class="card" onClick="func(`from_div`)" id="from" >
+          <h3>From</h3>
+          <div class="back" hidden=true id="from_div">
+            <p>Shiga</p>
+            <img src="./img/shiga.png" />
           </div>
         </section>
+
+        <section class="card" onClick="func(`school_div`)" id="school" >
+          <h3>University</h3>
+          <div class="back" hidden=true id="school_div">
+            <p>Doshisha</p>
+            <img src="./img/doshisha.jpeg" />
+          </div>
+        </section>
+
         <h2>Touch me!</h2>
 
       </div>
       
       <div class="content">
-        <h2>Hobby</h2>
+        <h2>My Favorite</h2>
         <section class="card" onClick="func(`sports_div`)" id="sports" >
           <h3>Sports</h3>
           <div class="back" hidden=true id="sports_div">
@@ -199,7 +195,7 @@
       
       <div class="content">
 
-        <h2>Study</h2>
+        <h2>I'm studying </h2>
         <section class="card" onClick="func(`interests_div`)" id="interests" >
           <h3>Interest</h3>
           <div class="back" hidden=true id="interests_div">
@@ -234,65 +230,13 @@
 
         <h2>Touch me!</h2>
       </div>
-      <h2>Can you succeed?</h2>
-      <h6 id="tips" hidden="true">If you hold down a certain key and click, you would succeed!</h6>
+
     </div>
 
-    <div class="hidden" id="picutre" hidden="true">
-      <img id="image" />
-      <h2>Failed!</h2>
-    </div>
-
-    <div class="hidden" id="success" hidden="true">
-      <img src="./img/success.png" id="image"/>
-      <h2>Success!</h2>
-    </div>
-
-
-    <button type="submit" id="button">Charange</button>
-    <button type="submit" id="miss" hidden="true" onclick="back()">back</button>
-
-  <script>
-    const img_list = [
-    "./img/shiga.png",
-    "./img/birthday.png",
-    "./img/star.jpg",
-    "./img/o.png",
-    "./img/soccer.png",
-    "./img/liverpool.png",
-    "./img/spy.png" ,
-    "./img/zutomayo.jpeg",
-    "./img/ai.png",
-    "./img/java.svg",
-    "./img/javascript.svg",
-    "./img/python.svg"
-    ]
-    
+  <script> 
     function func(s) {
       console.log(s)
       document.getElementById(s).hidden = false
-    }
-    function back() {
-      document.getElementById("all").hidden =false
-      document.getElementById("button").hidden = false
-      document.getElementById("tips").hidden = false
-      document.getElementById("success").hidden = true
-      document.getElementById("picutre").hidden = true
-      document.getElementById("miss").hidden = true
-
-    }
-    document.getElementById("button").onclick = function click(e){
-      document.getElementById("all").hidden =true
-      document.getElementById("button").hidden = true
-      document.getElementById("miss").hidden = false
-      if ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) {
-        document.getElementById("success").hidden = false
-        document.getElementById("picutre").hidden = true
-      } else {
-        const number = Math.floor(Math.random() * 12); 
-        document.getElementById("picutre").hidden = false
-        document.getElementById("image").setAttribute("src",img_list[number])
-      }
     }
   </script>
 </body>
