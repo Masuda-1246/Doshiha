@@ -10,6 +10,7 @@
     h3 {
       text-align: center;
       color:white;
+      text-shadow: 0 2px 5px rgb(66, 59, 59);
     }
     img {
       width: 150px;
@@ -18,6 +19,7 @@
       background-color: white;
       margin-left: 25px;
       border: solid;
+      box-shadow: 0 2px 5px #ccc;
     }
     p{
       text-align: center;
@@ -26,6 +28,7 @@
       margin-bottom:0px;
       margin-left:11px;
       color: white;
+      text-shadow: 0 2px 5px rgb(66, 59, 59);
     }
     .card {
       width: 200px;
@@ -34,43 +37,51 @@
       border-radius: 5px;
       box-shadow: 0 2px 5px #ccc;
       display: inline-block;
-      margin: 10px;
+      margin: 20px;
     }
     .card:hover{
-      opacity: 0.9;
+      opacity: 0.8;
     }
     .back{
       position:absolute;
+    }
+    .content{
+      border-radius:10px;
+      padding: 30px;
+      text-align: center;
+      margin: 100px 40px 100px 40px;
+      background-color:white;
+      box-shadow: 0 2px 5px #ccc;
     }
     #from{
       background-color:rgb(87, 213, 52);
     }
     #birthday{
-      background-color:rgb(227, 187, 55);
+      background-color:rgb(251, 215, 97);
     }
     #blood{
-      background-color:rgb(212, 118, 181);
+      background-color:rgb(247, 133, 209);
     }
     #sports{
       background-color:rgb(55, 178, 227);
     }
     #team{
-      background-color:rgb(227, 55, 55);
+      background-color:rgb(238, 34, 34);
     }
     #manga{
       background-color:rgb(55, 227, 172);
     }
     #arthist{
-      background-color:rgb(223, 33, 160);
+      background-color:rgb(188, 27, 135);
     }
     #interests{
-      background-color:rgb(223, 131, 33);
+      background-color:rgb(15, 29, 75);
     }
     #java{
       background-color:rgb(223, 74, 33);
     }
     #js{
-      background-color:rgb(217, 223, 33);
+      background-color:rgb(248, 252, 5);
     }
     #python{
       background-color:rgb(36, 223, 33);
@@ -82,106 +93,119 @@
 </head>
 <body>
   <h2>Masuda Yousuke</h2>
-    <div>
+  <div>
+    <div class="content">
+        <h2>About Me</h2>
+        <section class="card" onClick="func(`from_div`)" id="from" >
+          <h3>From</h3>
+          <div class="back" hidden=true id="from_div">
+            <p>Shiga</p>
+            <img src="./img/shiga.png" />
+          </div>
+        </section>
 
-    </div>
-      <section class="card" onClick="func(`from_div`)" id="from" >
-        <h3>From</h3>
-        <div class="back" hidden=true id="from_div">
-          <p>Shiga</p>
-          <img src="./img/shiga.png" />
-        </div>
-      </section>
+        <section class="card" onClick="func(`birthday_div`)" id="birthday" >
+          <h3>Birthday</h3>
+          <div class="back" hidden=true id="birthday_div">
+            <p>11/12</p>
+            <img src="./img/birthday.png" />
+          </div>
+        </section>
 
-      <section class="card" onClick="func(`birthday_div`)" id="birthday" >
-        <h3>Birthday</h3>
-        <div class="back" hidden=true id="birthday_div">
-          <p>11/12</p>
-          <img src="./img/birthday.png" />
-        </div>
-      </section>
+        <section class="card" onClick="func(`star_div`)" id="star" >
+          <h3>sit straight</h3>
+          <div class="back" hidden=true id="star_div">
+            <p>Scorpion</p>
+            <img src="./img/star.jpg" />
+          </div>
+        </section>
 
-      <section class="card" onClick="func(`star_div`)" id="star" >
-        <h3>sit straight</h3>
-        <div class="back" hidden=true id="star_div">
-          <p>Scorpion</p>
-          <img src="./img/star.jpg" />
-        </div>
-      </section>
+        <section class="card" onClick="func(`blood_div`)" id="blood" >
+          <h3>Blood Type</h3>
+          <div class="back" hidden=true id="blood_div">
+            <p>O</p>
+            <img src="./img/o.png" />
+          </div>
+        </section>
+        <h2>Touch me!</h2>
 
-      <section class="card" onClick="func(`blood_div`)" id="blood" >
-        <h3>Blood Type</h3>
-        <div class="back" hidden=true id="blood_div">
-          <p>O</p>
-          <img src="./img/o.png" />
-        </div>
-      </section>
-
-      <section class="card" onClick="func(`sports_div`)" id="sports" >
-        <h3>Sports</h3>
-        <div class="back" hidden=true id="sports_div">
-          <p>Soccer</p>
-          <img src="./img/soccer.png" />
-        </div>
-      </section>
-
-      <section class="card" onClick="func(`team_div`)" id="team" >
-        <h3>Team</h3>
-        <div class="back" hidden=true id="team_div">
-          <p>Liverpool</p>
-          <img src="./img/liverpool.png" />
-        </div>
-      </section>
-
-      <section class="card" onClick="func(`manga_div`)" id="manga" >
-        <h3>Manga</h3>
-        <div class="back" hidden=true id="manga_div">
-          <p>SPY×FAMILY</p>
-          <img src="./img/spy.png" />
-        </div>
-      </section>
-
-      <section class="card" onClick="func(`arghist_div`)" id="arthist" >
-        <h3>Arthist</h3>
-        <div class="back" hidden=true id="arghist_div">
-          <p>zutomayo</p>
-          <img src="./img/zutomayo.jpeg" />
-        </div>
-      </section>
-
-      <section class="card" onClick="func(`interests_div`)" id="interests" >
-        <h3>Interest</h3>
-        <div class="back" hidden=true id="interests_div">
-          <p>Artificial intelligence</p>
-          <img src="./img/ai.png" />
-        </div>
-      </section>
-
-      <section class="card" onClick="func(`java_div`)" id="java" >
-        <h3>Language</h3>
-        <div class="back" hidden=true id="java_div">
-          <p>Java</p>
-          <img src="./img/java.svg" />
-        </div>
-      </section>
-
-      <section class="card" onClick="func(`js_div`)" id="js" >
-        <h3>Language</h3>
-        <div class="back" hidden=true id="js_div">
-          <p>JavaScript</p>
-          <img src="./img/javascript.svg" />
-        </div>
-      </section>
-
-      <section class="card" onClick="func(`python_div`)" id="python" >
-        <h3>Language</h3>
-        <div class="back" hidden=true id="python_div">
-          <p>Python</p>
-          <img src="./img/python.svg" />
-        </div>
-      </section>
-      <h2>Touch me!</h2>
+      </div>
       
+      <div class="content">
+        <h2>Hobby</h2>
+        <section class="card" onClick="func(`sports_div`)" id="sports" >
+          <h3>Sports</h3>
+          <div class="back" hidden=true id="sports_div">
+            <p>Soccer</p>
+            <img src="./img/soccer.png" />
+          </div>
+        </section>
+
+        <section class="card" onClick="func(`team_div`)" id="team" >
+          <h3>Team</h3>
+          <div class="back" hidden=true id="team_div">
+            <p>Liverpool</p>
+            <img src="./img/liverpool.png" />
+          </div>
+        </section>
+
+        <section class="card" onClick="func(`manga_div`)" id="manga" >
+          <h3>Manga</h3>
+          <div class="back" hidden=true id="manga_div">
+            <p>SPY×FAMILY</p>
+            <img src="./img/spy.png" />
+          </div>
+        </section>
+
+        <section class="card" onClick="func(`arthist_div`)" id="arthist" >
+          <h3>Arthist</h3>
+          <div class="back" hidden=true id="arthist_div">
+            <p>zutomayo</p>
+            <img src="./img/zutomayo.jpeg" />
+          </div>
+        </section>
+        <h2>Touch me!</h2>
+
+      </div>
+      
+      <div class="content">
+
+        <h2>Study</h2>
+        <section class="card" onClick="func(`interests_div`)" id="interests" >
+          <h3>Interest</h3>
+          <div class="back" hidden=true id="interests_div">
+            <p>Artificial Intelligence</p>
+            <img src="./img/ai.png" />
+          </div>
+        </section>
+
+        <section class="card" onClick="func(`java_div`)" id="java" >
+          <h3>Language</h3>
+          <div class="back" hidden=true id="java_div">
+            <p>Java</p>
+            <img src="./img/java.svg" />
+          </div>
+        </section>
+
+        <section class="card" onClick="func(`js_div`)" id="js" >
+          <h3>Language</h3>
+          <div class="back" hidden=true id="js_div">
+            <p>JavaScript</p>
+            <img src="./img/javascript.svg" />
+          </div>
+        </section>
+
+        <section class="card" onClick="func(`python_div`)" id="python" >
+          <h3>Language</h3>
+          <div class="back" hidden=true id="python_div">
+            <p>Python</p>
+            <img src="./img/python.svg" />
+          </div>
+        </section>
+
+        <h2>Touch me!</h2>
+      </div>
+
     </div>
   </section>
   <script>
