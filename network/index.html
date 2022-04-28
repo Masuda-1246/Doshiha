@@ -3,6 +3,10 @@
 <head>
   <title>1116211038 増田遥介</title>
   <style>
+    body{
+      background-color:rgb(253, 239, 216);
+      text-align: center;
+    }
     h2 {
       text-align: center;
       margin: 20px;
@@ -30,6 +34,12 @@
       color: white;
       text-shadow: 0 2px 5px rgb(66, 59, 59);
     }
+    button{
+      width: 300px;
+      padding: 10px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
     .card {
       width: 200px;
       height: 250px;
@@ -38,6 +48,7 @@
       box-shadow: 0 2px 5px #ccc;
       display: inline-block;
       margin: 20px;
+      cursor: pointer;
     }
     .card:hover{
       opacity: 0.8;
@@ -55,6 +66,9 @@
     }
     #from{
       background-color:rgb(87, 213, 52);
+    }
+    .hidden{
+      text-align: center;
     }
     #birthday{
       background-color:rgb(251, 215, 97);
@@ -89,11 +103,17 @@
     #star{
       background-color:rgb(103, 33, 223);
     }
+    #image{
+      margin-left: 0px;
+    }
+    #all{
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <h2>Masuda Yousuke</h2>
-  <div>
+  <div id="all">
     <div class="content">
         <h2>About Me</h2>
         <section class="card" onClick="func(`from_div`)" id="from" >
@@ -205,14 +225,54 @@
 
         <h2>Touch me!</h2>
       </div>
-
     </div>
-  </section>
+    <div class="hidden" id="picutre" hidden="true">
+      <img id="image" />
+      <h2>Failed!</h2>
+    </div>
+
+    <div class="hidden" id="success" hidden="true">
+      <img src="./img/success.png" id="image"/>
+      <h2>Success!</h2>
+    </div>
+
+
+    <button type="submit" id="button">Charange</button>
+
   <script>
+    const img_list = [
+    "./img/shiga.png",
+    "./img/birthday.png",
+    "./img/star.jpg",
+    "./img/o.png",
+    "./img/soccer.png",
+    "./img/liverpool.png",
+    "./img/spy.png" ,
+    "./img/zutomayo.jpeg",
+    "./img/ai.png",
+    "./img/java.svg",
+    "./img/javascript.svg",
+    "./img/python.svg"
+    ]
+    
     function func(s) {
       console.log(s)
-      let a = document.getElementById(s)
-      a.hidden = false
+      document.getElementById(s).hidden = false
+    }
+    
+    document.getElementById("button").onclick = function click(e){
+      console.log("hello")
+      if ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) {
+        document.getElementById("all").hidden =true
+        document.getElementById("success").hidden = false
+        document.getElementById("picutre").hidden = true
+        document.getElementById("button").hidden = true
+      } else {
+        const number = Math.floor(Math.random() * 12); 
+        document.getElementById("all").hidden =true
+        document.getElementById("picutre").hidden = false
+        document.getElementById("image").setAttribute("src",img_list[number])
+      }
     }
   </script>
 </body>
