@@ -7,6 +7,9 @@
       background-color:rgb(253, 239, 216);
       text-align: center;
     }
+    h1{
+      text-shadow: 0 2px 5px #ccc;
+    }
     h2 {
       text-align: center;
       margin: 20px;
@@ -55,6 +58,7 @@
     }
     .back{
       position:absolute;
+      animation: fadeIn 2s ease 0s 1 normal;
     }
     .content{
       border-radius:10px;
@@ -64,11 +68,16 @@
       background-color:white;
       box-shadow: 0 2px 5px #ccc;
     }
-    #from{
-      background-color:rgb(87, 213, 52);
-    }
     .hidden{
       text-align: center;
+      animation: fadeIn 2s ease 0s 1 normal;
+    }
+    @keyframes fadeIn {
+      0% {opacity: 0}
+      100% {opacity: 1} 
+    }
+    #from{
+      background-color:rgb(87, 213, 52);
     }
     #birthday{
       background-color:rgb(251, 215, 97);
@@ -112,7 +121,7 @@
   </style>
 </head>
 <body>
-  <h2>Masuda Yousuke</h2>
+  <h1>Masuda Yousuke</h1>
   <div id="all">
     <div class="content">
         <h2>About Me</h2>
@@ -225,7 +234,10 @@
 
         <h2>Touch me!</h2>
       </div>
+      <h2>Can you succeed?</h2>
+      <h6 id="tips" hidden="true">If you hold down a certain key and click, you would succeed!</h6>
     </div>
+
     <div class="hidden" id="picutre" hidden="true">
       <img id="image" />
       <h2>Failed!</h2>
@@ -238,6 +250,7 @@
 
 
     <button type="submit" id="button">Charange</button>
+    <button type="submit" id="miss" hidden="true" onclick="back()">back</button>
 
   <script>
     const img_list = [
@@ -259,17 +272,24 @@
       console.log(s)
       document.getElementById(s).hidden = false
     }
-    
+    function back() {
+      document.getElementById("all").hidden =false
+      document.getElementById("button").hidden = false
+      document.getElementById("tips").hidden = false
+      document.getElementById("success").hidden = true
+      document.getElementById("picutre").hidden = true
+      document.getElementById("miss").hidden = true
+
+    }
     document.getElementById("button").onclick = function click(e){
-      console.log("hello")
+      document.getElementById("all").hidden =true
+      document.getElementById("button").hidden = true
+      document.getElementById("miss").hidden = false
       if ((e.ctrlKey && !e.metaKey) || (!e.ctrlKey && e.metaKey)) {
-        document.getElementById("all").hidden =true
         document.getElementById("success").hidden = false
         document.getElementById("picutre").hidden = true
-        document.getElementById("button").hidden = true
       } else {
         const number = Math.floor(Math.random() * 12); 
-        document.getElementById("all").hidden =true
         document.getElementById("picutre").hidden = false
         document.getElementById("image").setAttribute("src",img_list[number])
       }
