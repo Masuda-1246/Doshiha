@@ -13,7 +13,7 @@ Ns = L * Fs + 1;
 t = zeros(1,Ns);
 p = zeros(1,Ns);
 
-f = 300;
+f = 40;
 t0 = 0.2;
 z = zeros(1, Fs/2);
 
@@ -29,3 +29,4 @@ for i = 1:Ns
 end
 q = [p z p z p];
 sound(q,Fs);
+% audiowrite('ensyu6_jougen.wav',p,Fs)

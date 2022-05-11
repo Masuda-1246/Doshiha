@@ -1,0 +1,172 @@
+
+<html>
+  <head>
+    <meta http-equiv="content-type" charset="UTF-8">
+    <title>1116211038 増田遥介</title>
+    <style>
+      body{
+        background-color:rgb(253, 239, 216);
+        text-align: center;
+      }
+      h1{
+        text-shadow: 0 2px 5px #ccc;
+      }
+      h2 {
+        text-align: center;
+        margin: 20px;
+      }
+      h3 {
+        text-align: center;
+        color:white;
+        text-shadow: 0 2px 5px rgb(66, 59, 59);
+      }
+      img {
+        width: 150px;
+        height:150px;
+        border-radius: 50%; 
+        background-color: white;
+        margin-left: 25px;
+        border: solid;
+        box-shadow: 0 2px 5px #ccc;
+      }
+      p{
+        text-align: center;
+        width: 100%;
+        margin-top:0px;
+        margin-bottom:0px;
+        margin-left:11px;
+        color: white;
+        text-shadow: 0 2px 5px rgb(66, 59, 59);
+      }
+      button{
+        width: 300px;
+        padding: 10px;
+        box-sizing: border-box;
+        cursor: pointer;
+      }
+      .card {
+        width: 200px;
+        height: 250px;
+        background: #fff;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px #ccc;
+        display: inline-block;
+        margin: 20px;
+        cursor: pointer;
+      }
+      .card:hover{
+        opacity: 0.8;
+      }
+      .back{
+        position:absolute;
+        animation: fadeIn 2s ease 0s 1 normal;
+      }
+      .content{
+        border-radius:10px;
+        padding: 30px;
+        text-align: center;
+        margin: 100px 40px 100px 40px;
+        background-color:white;
+        box-shadow: 0 2px 5px #ccc;
+      }
+      @keyframes fadeIn {
+        0% {opacity: 0}
+        100% {opacity: 1} 
+      }
+      #all{
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Masuda Yousuke</h1>
+    <div id="all">
+      <div class="content" id="me">
+        <h2>About Me</h2>
+      </div>
+      
+      <div class="content" id="favorite">
+        <h2>My Favorite</h2>
+      </div>
+    
+      <div class="content" id ="studying"> 
+        <h2>I'm studying </h2>
+      </div>
+    </div>
+
+    <script> 
+      function func(s) {
+        document.getElementById(s).hidden = false
+      }
+      window.addEventListener('load',function(){
+        let me = document.getElementById("me")
+        let favorite = document.getElementById("favorite")
+        let studying = document.getElementById("studying")
+        create(me_lists,me)
+        create(favorite_lists,favorite)
+        create(studying_lists,studying)
+      })
+
+      const me_lists = [
+        ["Birthday","birthday.png","2002/11/12","rgb(251, 215, 97)"],
+        ["Scorpion","star.png","sit straight","rgb(128, 114, 152)"],
+        ["From","shiga.png","Shiga","rgb(52, 200, 213)"],
+        ["University","doshisha.jpeg","Doshisha","rgb(94, 0, 95)"],
+      ]
+      const favorite_lists = [
+        ["Sports","soccer.png","Soccer","rgb(66, 227, 55)"],
+        ["Team","liverpool.png","Liverpool","rgb(238, 34, 34)"],
+        ["Manga","spy.png","SPY×FAMILY","rgb(55, 227, 172)"],
+        ["Arthist","zutomayo.jpeg","zutomayo","rgb(188, 27, 135)"],
+      ]
+      const studying_lists = [
+        ["Interest","ai.png","Soccer","rgb(15, 29, 75)"],
+        ["Language","java.svg","Java","rgb(223, 46, 33)"],
+        ["Language","javascript.svg","JavaScript","rgb(252, 244, 5)"],
+        ["Language","python.svg","Python","rgb(10, 243, 6)"],
+      ]
+
+      function create(lists,id) {
+        lists.forEach((list) => {
+          let card = document.createElement("section")
+          let back = document.createElement("div")
+          let h3 = document.createElement("h3")
+          let p = document.createElement("p")
+          let image = document.createElement("img")
+
+          card.setAttribute("class","card")
+          card.style.background = list[3]
+          back.setAttribute("class","back")
+          back.hidden = true
+
+          if (list[0] == "Language") {
+            card.setAttribute("id",list[2])
+            back.setAttribute("id",`${list[2]}_div`)
+            card.onclick = function(){
+              func(`${list[2]}_div`)
+            }
+          } else {
+            card.setAttribute("id",list[0])
+            back.setAttribute("id",`${list[0]}_div`)
+            card.onclick = function(){
+              func(`${list[0]}_div`)
+            }
+          }
+
+          h3.innerHTML = list[0]
+          p.innerHTML = list[2]
+          image.src = `./img/${list[1]}`
+
+          back.appendChild(p)
+          back.appendChild(image)
+          card.appendChild(h3)
+          card.appendChild(back)
+          id.appendChild(card)
+        })
+        let h2 = document.createElement("h2")
+        h2.innerHTML = "Touch me!"
+        id.appendChild(h2)
+      }
+    </script>
+  </body>
+  </html>

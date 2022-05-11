@@ -14,10 +14,10 @@ t = zeros(1,Ns);
 p0 = zeros(1,Ns);
 p1 = zeros(1,Ns);
 
-number = 1;
+number = 2;
 f = [100 500 1000];
 f0 = f(number);
-df = 10;
+df = 1;
 f1 = f0 + df;
 t0 = 0.2;
 z = zeros(1, Fs/2);
@@ -37,3 +37,4 @@ for i = 1:Ns
 end
 q = [p0 z p1];
 sound(q,Fs);
+audiowrite('ensyu7.wav',p1,Fs)

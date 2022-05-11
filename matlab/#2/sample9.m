@@ -14,7 +14,7 @@ t = zeros(1,Ns);
 p = zeros(1,Ns);
 
 fc = 500;
-fm = 500000;
+fm = 50;
 m = 1;
 z = zeros(1, Fs/2);
 

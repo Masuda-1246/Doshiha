@@ -18,20 +18,13 @@ p = zeros(1,Ns);
 bk = zeros(1,M(number));
 w = 2 * pi * f1;
 
-for i = 1:2:M(number)
-    bk(i) = 4 / (i * pi);
-end
-
-
 for i = 1:Ns
-    t(i) = (i-1)*Ts;
+    t(i) = (i-1) * Ts;
     for j=1:2:M(number)
         bk(i) = 4 / (j * pi);
         p(i) = p(i) + bk(i) * sin (w * j * t(i));
     end
 end
-
-
 
 plot(t,p);
 xlabel('t');
