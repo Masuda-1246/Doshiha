@@ -5,6 +5,7 @@ typedef volatile unsigned short hword;
 int main(void){
   hword *ptr;
   hword color;
+  int i;
 
   ptr = (hword*)0x04000000;
   *ptr = 0x0F03;
@@ -12,9 +13,7 @@ int main(void){
   color = 0x7FFF;
   ptr = (hword*)VRAM;
 
-  int i = 0;
-
-  for (i;i<4;i++){
+  for (i=0;i<4;i++){
     *ptr = color;
     ptr += 0x00000002;
   }
