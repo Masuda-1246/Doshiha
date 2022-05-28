@@ -10,24 +10,32 @@
 #define FIELD_HEIGT (22)
 #define SHAPE_WIDTH_MAX (4)
 #define SHAPE_HEIGHT_MAX (4)
-#define VEROSITY (100000)
+#define VEROSITY (50000)
 
 typedef volatile unsigned short hword;
 
+//ミノの座標のコンストラクタ
 typedef struct  {
 	int width, height;
 	int pattern[SHAPE_HEIGHT_MAX][SHAPE_WIDTH_MAX];
 }SHAPE;
 
+//ミノの形、種類、座標のコンストらくた
 typedef struct  {
 	int y,x;
 	SHAPE shape;
 }MINO;
 
+//マスを描画
 void draw_square (int, int, hword);
+//ミノを描画
 void draw_mino(int, int, int);
+//周りの壁を作成・描画
 void create_wall();
+//ミノを作成
 void create_mino();
+
+//各ミノの座標を定義
 void mino_i();
 void mino_o();
 void mino_t();
@@ -35,11 +43,20 @@ void mino_s();
 void mino_z();
 void mino_j();
 void mino_l();
+
+//startボタンでスタートする
 void start();
+
+//ゲームが終了したときに出てくる画面
 void finish();
 
+//ミノの初期化
 MINO mino;
+MINO mino1;
+
+//1つのミノの座標
 int field[FIELD_HEIGT][FIELD_WIDTH];
+//全てのミノの座標
 int screen[FIELD_HEIGT][FIELD_WIDTH];
 
 int main(void) {
@@ -63,6 +80,7 @@ int main(void) {
 	while(1){
 		key_ptr = (hword*)KEY;
 		key = *key_ptr;
+    //startボタンを押下するとゲームが始まる
 		if ((key&button_start)!=button_start){
 			start();
 		}  
@@ -88,8 +106,16 @@ void start()	{
 	int i;
 	int j;
     int count = 0;
+	//初期化
+	for (i = 0; i< FIELD_HEIGT; i++){
+			for (j = 0; j < FIELD_WIDTH; j++){
+				screen[i][j] = 0;
+				field[i][j] = 0;
+		}
+	}
 	color = WHITE;
-	mino.x=3;
+  //初めのx座標
+	mino.x=5;
 	mino_s();
 	create_wall();
 	while(1){
@@ -98,9 +124,10 @@ void start()	{
 		int x;
 		int y;
 		int y2;
-		for (i = 0; i<100000; i++);
+		for (i = 0; i<VEROSITY; i++);
 		key_ptr = (hword*)KEY;
 		key = *key_ptr;
+    //各キーでのミノの移動
 		if ((key & button_r) != button_r) {
 			number = 1;
 			mino.x 	+= 1;
@@ -112,18 +139,26 @@ void start()	{
 			mino.y 	+= 1;
 		}else if ((key & button_u) != button_u) {
 			number = 4;
-
+			mino1.shape.height = mino.shape.height;
+			mino1.shape.width = mino.shape.width;
 			for ( y = 0; y < mino.shape.height;y++){
 				for ( x = 0; x < mino.shape.width; x ++){
-					mino.shape.pattern[mino.shape.width -1 -x][y] = mino.shape.pattern[y][x];
+					mino1.shape.pattern[mino.shape.width -1 -x][y] = mino.shape.pattern[y][x];
+				}
+			}
+			for ( y = 0; y < mino.shape.height;y++){
+				for ( x = 0; x < mino.shape.width; x ++){
+					mino.shape.pattern[y][x] = mino1.shape.pattern[y][x];
 				}
 			}
 		}
+    //一度初期化配列を0で初期化
 		for (i = 0; i< FIELD_HEIGT; i++){
 			for (j = 0; j < FIELD_WIDTH; j++){
 				screen[i][j] = 0;
 			}
 		}
+    //あたり判定
 		for ( y = 0; y < mino.shape.height;y++){
 			for ( x = 0; x < mino.shape.width; x ++){
 				if (mino.shape.pattern[y][x]){
@@ -138,6 +173,7 @@ void start()	{
 				}
 			}
 		}
+    //当たり判定での動作
 		if (flag) {
 			switch (number)
 			{
@@ -147,14 +183,17 @@ void start()	{
 				break;
 			case 3: mino.y -= 1;
 				break;
+        //ミノが一番下、あるいはブロックの上にいるときの処理
 			default:
+        //ミノを全てのミノを格納する配列に格納
 				for ( y = 0; y < mino.shape.height;y++){
 					for ( x = 0; x < mino.shape.width; x ++){
 						if (mino.shape.pattern[y][x]){
-							field[mino.y+y][mino.x+x] |= 1;
+							field[mino.y+y][mino.x+x] = 1;
 						}
 					}
 				}
+        //列が揃った場合に削除し、下に詰める
 				for (y = 0; y < FIELD_HEIGT; y++) {
 					int complete = 1;
 					for ( x = 0; x < FIELD_WIDTH; x++){	
@@ -179,8 +218,9 @@ void start()	{
 						finish();
 					}
 				}
+        //ミノの初期化と形の変更
 				mino.y = 0;
-				mino.x = 3;
+				mino.x = 5;
 					if ( count == 0){mino_i();}
 					else if ( count == 1){mino_j();}
 					else if ( count == 2){mino_l();}
@@ -188,8 +228,8 @@ void start()	{
 					else if ( count == 4){mino_s();}
 					else if ( count == 5){mino_z();}
 					else if ( count == 6){mino_o();}
-				count = (count==6)? 0:count;
 				count ++;
+				count = (count==7)? 0:count;
 				break;
 			}
 		} else {
@@ -202,13 +242,24 @@ void start()	{
 void finish(){
 	int i;
 	int j;
+	hword key;
+	hword *key_ptr;
+	hword button_start;
+	button_start = 0x0008;
 	for (i = 0; i< FIELD_HEIGT; i++){
 			for (j = 0; j < FIELD_WIDTH; j++){
 				screen[i][j] = 1;
 		}
 	}
 	create_mino();
-	while (1);	
+	while(1){
+		key_ptr = (hword*)KEY;
+		key = *key_ptr;
+    	//startボタンを押下するとゲームが始まる
+		if ((key&button_start)!=button_start){
+			start();
+		}  
+	}	
 }
 
 void mino_i()	{
@@ -305,6 +356,7 @@ void mino_l()	{
 	mino.shape.pattern[2][2] = 0;
 }
 
+//ミノを表示させる
 void create_mino(){
 	int a;
 	int x;	
@@ -312,7 +364,7 @@ void create_mino(){
 	for ( y = 0; y < mino.shape.height;y++){
 		for ( x = 0; x < mino.shape.width; x ++) {
 			if (mino.shape.pattern[y][x]) {
-				screen[mino.y+y][mino.x + x] |= 1;
+				screen[mino.y+y][mino.x + x] = 1;
 			}
 		}
 	}
@@ -324,7 +376,7 @@ void create_mino(){
 	}
 }
 
-
+//配列をVRAMで表せるように微調整
 void draw_mino(int x, int y,int a){
 	hword color;
 	color = (a==1)? GREEN:BRACK;
@@ -335,7 +387,7 @@ void draw_mino(int x, int y,int a){
 	draw_square(x,y,color);
 }
 
-
+//ミノの範囲を示す壁を作成
 void create_wall() {
 	int i;
 	int x1;
@@ -356,6 +408,7 @@ void create_wall() {
 	}
 }
 
+//ミノや壁の基本となる四角を描画
 void draw_square (int x, int y, hword color){ 
  	hword *ptr;
     int i;
